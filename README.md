@@ -43,11 +43,24 @@ HTML:   Title:          Holding the objective of the game
 
 CSS:    Title styling:  
 
-JS:     Collisions
-        End Game 
 
-        Portal 1 = 10
-        portal: position
-                then position
+JS:     End Game State
+            Find the end portal (its orange in the drawio)
+            
+            Should there be a key to unlock End Portal?
+        
+        Controls
+            left
+            right
+            interact
+        
+        Collision Detection
+            When player object passes by portal object
+                transverse player at 2 frames p/s through to the pair portal
+            Test Portals
+                Portal 1 === 10
+            When player passes by points object, add points to scoreboard, under player-score
+            
+            When player object passes by End Game portal, game ends    
                 
 
