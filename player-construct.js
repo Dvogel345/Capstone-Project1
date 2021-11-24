@@ -1,11 +1,14 @@
-   
+// Case 1 - Trying out different ways to setup and move character
+    // Loading content on load of the page
 document.addEventListener("DOMContentLoaded", domloaded, false);
 function domloaded(){   
    // The attributes of the player.
     let player = {
-        x: 200,
+        x: 250,
         y: 440,
+        // horizontal velocity
         x_v: 0,
+        // vertical velocity
         y_v: 0,
         height: 20,
         width: 20
@@ -15,8 +18,11 @@ function domloaded(){
     let keys = {
         right: false,
         left: false,
-        jump: false,
+        stop: false,
         };
+
+    // Friction to show realistic movements
+    let friction = 0.7;
 
     // The number of platforms
     let num = 2;
@@ -42,7 +48,7 @@ function domloaded(){
             platforms.push(
                 {
                 x: 200 * i,
-                y: 450 ,
+                y: 450 + i,
                 width: 500,
                 height: 15
                 }
@@ -56,34 +62,48 @@ function domloaded(){
         ctx.fillRect(platforms[0].x, platforms[0].y, platforms[0].width, platforms[0].height);
     
     }
-    
-    // This function will be called when a key on the keyboard is pressed
+
+        // This function will be called when a key on the keyboard is pressed
     function keydown(e) {
-    
+        
         // 37 is the code for the left arrow key
         if(e.keyCode == 37) {
             keys.left = true;
         }
-    
+
+        // // 40 is the code for the down arrow key
+        // if(e.keyCode == 40) {
+        //     keys.stop = true;
+        // }
+
         // 39 is the code for the right arrow key
         if(e.keyCode == 39) {
             keys.right = true;
         }
     }
-    
+
     // This function is called when the pressed key is released
     function keyup(e) {
         if(e.keyCode == 37) {
             keys.left = false;
+            
         }
+        
+        // if(e.keyCode == 40) {
+        //    keys.stop = false; 
+        // }
 
         if(e.keyCode == 39) {
             keys.right = false;
         }
-    } 
-    
+    }
+
     function loop() {
-    
+        // If the player is not jumping apply the effect of friction
+        if(player.stop == false) {
+            player.x_v *= friction;
+        }
+
         // If the left key is pressed increase the relevant horizontal velocity
         if(keys.left) {
             player.x_v = -1.5;
@@ -94,7 +114,6 @@ function domloaded(){
         }
     
         // Updating the y and x coordinates of the player
-        player.y += player.y_v;
         player.x += player.x_v;
 
         // A simple code that checks for collions with the platform
@@ -104,16 +123,6 @@ function domloaded(){
             i = 0;
         }
         
-        if(platforms[1].x < player.x && player.x < platforms[1].x + platforms[1].width &&
-        platforms[1].y < player.y && player.y < platforms[1].y + platforms[1].height){
-            i = 1;
-        }
-
-        // if(platforms[2].x < player.x && player.x < platforms[2].x + platforms[2].width &&
-        // platforms[2].y < player.y && player.y < platforms[2].y + platforms[2].height){
-        //     i = 2;
-        // }
-
         // Rendering the canvas, the player and the platforms
         renderCanvas();
         renderPlayer();

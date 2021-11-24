@@ -63,4 +63,4 @@ JS:     End Game State
             
             When player object passes by End Game portal, game ends    
                 
-
+                
