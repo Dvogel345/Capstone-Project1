@@ -111,6 +111,8 @@ function domloaded(){
         
         if(keys.right) {
             player.x_v = 1.5;
+        } else {
+            player.x_v = 0.0;
         }
     
         // Updating the y and x coordinates of the player
