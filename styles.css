@@ -1,11 +1,13 @@
-.title-obj {
-
+#title-objective {
+    text-align: center;
 }
 
-#scoreboard{
-    border: 1px solid #ddd;
+#scoreboard {
+    border: 3px solid #ddd;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    margin-top: 10px;
+    margin-left: 465px;
     width: 300px;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -19,7 +21,7 @@
 #scoreboard-name-2 {
     font-weight: bold;
     border-bottom: 1px solid #ddd;
-    border-left: 1px solid #ddd;
+    border-left: 2px solid #ddd;
     text-align: center;
 }
 
@@ -29,5 +31,5 @@
 
 #scoreboard-score-2 {
     text-align: center;
-    border-left: 1px solid #ddd;
+    border-left: 2px solid #ddd;
 }

@@ -48,7 +48,7 @@ function domloaded(){
             platforms.push(
                 {
                 x: 200 * i,
-                y: 450 + i,
+                y: 450 + (30 * i),
                 width: 500,
                 height: 15
                 }
@@ -86,7 +86,7 @@ function domloaded(){
     function keyup(e) {
         if(e.keyCode == 37) {
             keys.left = false;
-            
+            x_v = 0.0;
         }
         
         // if(e.keyCode == 40) {
@@ -95,14 +95,11 @@ function domloaded(){
 
         if(e.keyCode == 39) {
             keys.right = false;
+            x_v = 0.0;
         }
     }
 
     function loop() {
-        // If the player is not jumping apply the effect of friction
-        if(player.stop == false) {
-            player.x_v *= friction;
-        }
 
         // If the left key is pressed increase the relevant horizontal velocity
         if(keys.left) {
@@ -111,8 +108,6 @@ function domloaded(){
         
         if(keys.right) {
             player.x_v = 1.5;
-        } else {
-            player.x_v = 0.0;
         }
     
         // Updating the y and x coordinates of the player
