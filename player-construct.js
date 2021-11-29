@@ -33,6 +33,8 @@ window.onload = function(){
     for (let i = 0; i < 1; i++){
         borders.push(new Border(770, 0,  30, 500, 2))
     }
+    borders.push(new Border(100, 320, 600, 30, 1));
+    borders.push(new Border(100, 150, 600, 30, 1));
 
 
     
