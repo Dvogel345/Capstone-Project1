@@ -3,7 +3,7 @@ function Player(x, y){
     this.x = x;
     this.y = y;
     // horizontal velocity
-    this.xspeed = 0;
+    this.xSpeed = 0;
     // what causes the player to slow down
     this.friction = 0.6;
     // speed at which the player moves
@@ -18,22 +18,45 @@ function Player(x, y){
             // Horizontal Movement
             if (!leftKey && !rightKey || leftKey && rightKey){
                 // Slow down
-                this.xspeed *= this.friction;
+                this.xSpeed *= this.friction;
             } else if (rightKey) {
                 // Move right
-                this.xspeed ++;
+                this.xSpeed ++;
             } else if (leftKey) {
                 // Move left
-                this.xspeed --;
+                this.xSpeed --;
             }
             // Correct the Speed
             if (this.speed > this.maxSpeed) {
-                this.xspeed = this.maxSpeed;
-            } else if (this.xspeed < -this.maxSpeed) {
-                this.xspeed = -this.maxSpeed;
+                this.xSpeed = this.maxSpeed;
+            } else if (this.xSpeed < -this.maxSpeed) {
+                this.xSpeed = -this.maxSpeed;
+            }
+            if (this.xSpeed > 0) {
+                this.xSpeed = Math.floor(this.xSpeed);
+            } else {
+                this.xSpeed = Math.ceil(this.xSpeed);
             }
 
-            this.x += this.xspeed;
+            // Horizontal Collision Rect
+            let horizontalRectDetect = {
+                x: this.x + this.xSpeed,
+                y: this.y,
+                width: this.width,
+                height: this.height
+            }
+
+            // Check for intersections
+            for (let i = 0; i < borders.length; i++) {
+                let borderRect = {
+                    x: borders[i].x,
+                    y: borders[i].y,
+                    width: borders[i].width,
+                    height: borders[i].height
+                }
+            }
+
+            this.x += this.xSpeed;
         }
     }
 

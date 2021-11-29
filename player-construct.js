@@ -35,8 +35,6 @@ window.onload = function(){
     }
     borders.push(new Border(100, 320, 600, 30, 1));
     borders.push(new Border(100, 150, 600, 30, 1));
-
-
     
     // Start game loop
     gameLoop = setInterval(step, 1000/30);
@@ -86,4 +84,18 @@ function setupInputs() {
             leftKey = false;
         }
     });
+}
+
+function checkIntersection(r1, r2) {
+    if(r1.x >= r2.x + r2.width) {
+        return false;
+    } else if (r1.x + r1.x <= r2.x) {
+        return false;
+    } else if (r1.y >= r2.y + r2.width) {
+        return false;
+    } else if (r1.y + r1.height <= r2.y) {
+        return false;
+    } else {
+        return true;
+    }
 }
