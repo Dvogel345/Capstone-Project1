@@ -7,6 +7,7 @@ let ctx;
 let gameloop;
 let player;
 let borders = [];
+let portals;
 
 // Create Input Variables
 let rightKey;
@@ -29,15 +30,29 @@ window.onload = function(){
     for (let i = 0; i < 1; i++) {
         borders.push(new Border(30, 470, 800, 30, 1))
     }
+    //walls
+    for (let i = 0; i < 1; i++){
     borders.push(new Border(0, 0, 30, 800, 2));
+    }
     for (let i = 0; i < 1; i++){
         borders.push(new Border(770, 0,  30, 500, 2))
     }
+    // middle level
+    for (let i = 0; i < 1; i++){
     borders.push(new Border(100, 320, 600, 30, 1));
+    }
+    //top level
+    for (let i = 0; i < 1; i++){
     borders.push(new Border(100, 150, 600, 30, 1));
-    
+    }
+
     // Start game loop
     gameLoop = setInterval(step, 1000/30);
+
+    // Create Portals
+    // for (let i = 0; i < 2; i++){
+    //     portals.push(new Portal(90, 90, 50, 50, 1));
+    // } 
 
 }
 
@@ -51,7 +66,7 @@ function step() {
 
 function draw() {
     // Clear canvas
-    ctx.fillStyle = "grey";
+    ctx.fillStyle = "#e6e5e5";
     ctx.fillRect(0, 0, 800, 500);
 
     // Draw the player
