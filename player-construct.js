@@ -1,144 +1,87 @@
-// Case 1 - Trying out different ways to setup and move character
-    // Loading content on load of the page
-document.addEventListener("DOMContentLoaded", domloaded, false);
-function domloaded(){   
-   // The attributes of the player.
-    let player = {
-        x: 250,
-        y: 440,
-        // horizontal velocity
-        x_v: 0,
-        // vertical velocity
-        y_v: 0,
-        height: 20,
-        width: 20
-        };
 
-    // The status of the arrow keys
-    let keys = {
-        right: false,
-        left: false,
-        stop: false,
-        };
+// Create drawing variables
+let canvas;
+let ctx;
 
-    // Friction to show realistic movements
-    let friction = 0.7;
+// Create game loops
+let gameloop;
+let player;
+let borders = [];
 
-    // The number of platforms
-    let num = 2;
+// Create Input Variables
+let rightKey;
+let leftKey;
 
-    // The platforms
-    let platforms = [];
-
-    // Function to render the canvas
-    function renderCanvas(){
-        ctx.fillStyle = "#0F3F1B";
-        ctx.fillRect(0, 0, 500, 500);
-    }
-
-    // Function to render the player
-    function renderPlayer(){
-        ctx.fillStyle = "#0FF8FB";
-        ctx.fillRect((player.x)-20, (player.y)-8, player.width, player.height);
-        }
-    
-        // Function to create platforms
-    function createPlatform(){
-        for(i = 0; i < num; i++) {
-            platforms.push(
-                {
-                x: 200 * i,
-                y: 450 + i,
-                width: 500,
-                height: 15
-                }
-            );
-        }
-        }
-    
-        // Function to render platforms
-    function renderPlatform(){
-        ctx.fillStyle = "#45597E";
-        ctx.fillRect(platforms[0].x, platforms[0].y, platforms[0].width, platforms[0].height);
-    
-    }
-
-        // This function will be called when a key on the keyboard is pressed
-    function keydown(e) {
-        
-        // 37 is the code for the left arrow key
-        if(e.keyCode == 37) {
-            keys.left = true;
-        }
-
-        // // 40 is the code for the down arrow key
-        // if(e.keyCode == 40) {
-        //     keys.stop = true;
-        // }
-
-        // 39 is the code for the right arrow key
-        if(e.keyCode == 39) {
-            keys.right = true;
-        }
-    }
-
-    // This function is called when the pressed key is released
-    function keyup(e) {
-        if(e.keyCode == 37) {
-            keys.left = false;
-            
-        }
-        
-        // if(e.keyCode == 40) {
-        //    keys.stop = false; 
-        // }
-
-        if(e.keyCode == 39) {
-            keys.right = false;
-        }
-    }
-
-    function loop() {
-        // If the player is not jumping apply the effect of friction
-        if(player.stop == false) {
-            player.x_v *= friction;
-        }
-
-        // If the left key is pressed increase the relevant horizontal velocity
-        if(keys.left) {
-            player.x_v = -1.5;
-        }
-        
-        if(keys.right) {
-            player.x_v = 1.5;
-        } else {
-            player.x_v = 0.0;
-        }
-    
-        // Updating the y and x coordinates of the player
-        player.x += player.x_v;
-
-        // A simple code that checks for collions with the platform
-        let i = -1;
-        if(platforms[0].x < player.x && player.x < platforms[0].x + platforms[0].width &&
-        platforms[0].y < player.y && player.y < platforms[0].y + platforms[0].height){
-            i = 0;
-        }
-        
-        // Rendering the canvas, the player and the platforms
-        renderCanvas();
-        renderPlayer();
-        renderPlatform();
-    }
-
+// Runs once page loads
+window.onload = function(){
+    //Assigns canvas and context variables
     canvas = document.getElementById("canvas");
-    ctx = canvas.getContext("2d");
-    ctx.canvas.height = 500;
-    ctx.canvas.width = 500;
-    createPlatform();
+    ctx = canvas.getContext("2d")
 
-    // Adding the event listeners
-    document.addEventListener("keydown", keydown);
-    document.addEventListener("keyup", keyup);
-    setInterval(loop, 22);
+    // Steup key listeners
+    setupInputs();
+
+    // Create Player
+    // (x / y coords)
+    player = new Player(60, 420)
+
+    // Create Borders
+    for (let i = 0; i < 1; i++) {
+        borders.push(new Border(30, 470, 800, 30, 1))
+    }
+    borders.push(new Border(0, 0, 30, 800, 2));
+    for (let i = 0; i < 1; i++){
+        borders.push(new Border(770, 0,  30, 500, 2))
+    }
+
+
+    
+    // Start game loop
+    gameLoop = setInterval(step, 1000/30);
+
+}
+
+function step() {
+    // step player
+    player.step();
+
+    // Draw everything
+    draw();
+}
+
+function draw() {
+    // Clear canvas
+    ctx.fillStyle = "grey";
+    ctx.fillRect(0, 0, 800, 500);
+
+    // Draw the player
+    player.draw();
+
+    //Draw the borders
+    for (let i = 0; i < borders.length; i++){
+        borders[i].draw();
+    }
+
+}
+
+function setupInputs() {
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "ArrowRight") {
+            // console.log("right");
+            rightKey = true;
+        } else if (event.key === "ArrowLeft") {
+            // console.log("left");
+            leftKey = true;
+        }
+    });
+
+    document.addEventListener("keyup", function(event) {
+        if (event.key === "ArrowRight") {
+            // console.log("right");
+            rightKey = false;
+        } else if (event.key === "ArrowLeft") {
+            // console.log("left");
+            leftKey = false;
+        }
+    });
 }

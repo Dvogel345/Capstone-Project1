@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="player-construct.js"></script>
     <script src="player-controls.js"></script>
+    <script src="border.js"></script>
 </head>
 
 <body>
@@ -16,14 +17,17 @@
         <h1>Get to the Exit with as many points as you can!</h1>
     </div>
 
-    <canvas id="canvas"></canvas>
-    
-    <div id="scoreboard">
-        <div id="scoreboard-name-1">Player 1</div>
-        <div id="scoreboard-name-2">Player 2</div>
-        <div id="scoreboard-score-1">0000</div>
-        <div id="scoreboard-score-2">0000</div>
-    </div>
 
+    <canvas id="canvas" width=800 height=500></canvas>
+
+    
+    <div>
+        <div id="scoreboard">
+            <div id="scoreboard-name-1">Player 1</div>
+            <div id="scoreboard-name-2">Player 2</div>
+            <div id="scoreboard-score-1">0000</div>
+            <div id="scoreboard-score-2">0000</div>
+        </div>
+    </div>
 </body>
 </html>
