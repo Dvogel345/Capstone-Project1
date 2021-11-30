@@ -4,8 +4,12 @@ function Player(x, y){
     this.y = y;
     // horizontal velocity
     this.xSpeed = 0;
+    // vertical velocity
+    this.ySpeed = 0;
     // what causes the player to slow down
     this.friction = 0.6;
+    // causing the player to fall down
+    this.gravity = 0;
     // speed at which the player moves
     this.maxSpeed = 10;
     this.width = 20;
@@ -26,11 +30,27 @@ function Player(x, y){
                 // Move left
                 this.xSpeed --;
             }
+            if (upKey) {
+                // Check if on ground
+
+                // Move up
+                this.ySpeed -= 15;
+            } else if (downKey) {
+                // Move down
+                this.ySpeed = 15;
+            }
+            // Apply gravity
+            this.ySpeed += 5;
             // Correct the Speed
-            if (this.speed > this.maxSpeed) {
+            if (this.xSpeed > this.maxSpeed) {
                 this.xSpeed = this.maxSpeed;
             } else if (this.xSpeed < -this.maxSpeed) {
                 this.xSpeed = -this.maxSpeed;
+            }
+            if (this.ySpeed > this.maxSpeed) {
+                this.ySpeed = this.maxSpeed;
+            } else if (this.ySpeed < -this.maxSpeed) {
+                this.ySpeed = -this.maxSpeed;
             }
             if (this.xSpeed > 0) {
                 this.xSpeed = Math.floor(this.xSpeed);
@@ -57,6 +77,7 @@ function Player(x, y){
             }
 
             this.x += this.xSpeed;
+            this.y += this.ySpeed;
         }
     }
 
