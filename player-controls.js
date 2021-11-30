@@ -73,10 +73,10 @@ function Player(x, y){
                 // }
                 // if (checkIntersection(verticalRectDetect, borderRect)){
                 //     this.xSpeed = 0;
-                // }
+                }
             }
 
-            this.x += this.xSpeed;
+            // this.x += this.xSpeed;
         }
     }
 
