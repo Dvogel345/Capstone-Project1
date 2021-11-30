@@ -7,7 +7,7 @@ function Player(x, y){
     // what causes the player to slow down
     this.friction = 0.6;
     // speed at which the player moves
-    this.maxSpeed = 5;
+    this.maxSpeed = 10;
     this.width = 20;
     this.height = 50;
     this.active = true;
@@ -55,28 +55,8 @@ function Player(x, y){
             }
 
             // Check for intersections
-            for (let i = 0; i < borders.length; i++) {
-                let borderRect = {
-                    x: borders[i].x,
-                    y: borders[i].y,
-                    width: borders[i].width,
-                    height: borders[i].height
-                }
-
-                if (checkIntersection(horizontalRectDetect, borderRect)){
-                    // console.log("hit");
-                    // while (checkIntersection(horizontalRectDetect, borderRect)){
-                    //     horizontalRectDetect.x -= Math.sign(this.xSpeed);
-                    // }
-                    // this.x = horizontalRect.x;
-                    // this.xSpeed = 0;
-                // }
-                // if (checkIntersection(verticalRectDetect, borderRect)){
-                //     this.xSpeed = 0;
-                }
-            }
-
-            // this.x += this.xSpeed;
+            
+           
         }
     }
 
