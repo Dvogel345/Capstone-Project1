@@ -8,6 +8,7 @@ let gameloop;
 let player;
 let borders = [];
 
+
 // Create Input Variables
 let rightKey;
 let leftKey;
@@ -23,17 +24,27 @@ window.onload = function(){
 
     // Create Player
     // (x / y coords)
-    player = new Player(450, 420)
+    player = new Player(460, 420);
 
     // Create Borders
-    borders.push(new Border(30, 470, 800, 30, 1));
+   
+    borders.push(new Border(30, 470, 800, 30, 1))
+    //walls
+   
     borders.push(new Border(0, 0, 30, 800, 2));
-    borders.push(new Border(770, 0,  30, 500, 2));
-    borders.push(new Border(100, 320, 600, 30, 1));
-    borders.push(new Border(100, 150, 600, 30, 1));
+  
+    borders.push(new Border(770, 0,  30, 500, 2))
+    // middle level
     
+    borders.push(new Border(100, 320, 600, 30, 1));
+    //top level
+
+    borders.push(new Border(100, 150, 600, 30, 1));
     // Start game loop
     gameLoop = setInterval(step, 1000/30);
+
+    // Create Portals
+    
 
 }
 
@@ -47,7 +58,7 @@ function step() {
 
 function draw() {
     // Clear canvas
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "#e6e5e5";
     ctx.fillRect(0, 0, 800, 500);
 
     // Draw the player
@@ -57,7 +68,6 @@ function draw() {
     for (let i = 0; i < borders.length; i++){
         borders[i].draw();
     }
-    // borders.draw();
 
 }
 
@@ -74,10 +84,10 @@ function setupInputs() {
 
     document.addEventListener("keyup", function(event) {
         if (event.key === "ArrowRight") {
-            // console.log("right");
+            // console.log("right2");
             rightKey = false;
         } else if (event.key === "ArrowLeft") {
-            // console.log("left");
+            // console.log("left2");
             leftKey = false;
         }
     });
