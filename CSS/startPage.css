@@ -1,0 +1,31 @@
+body {
+    margin-top: 100px;
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 200%;
+}
+
+h1 {
+    margin: 150px 150px;
+    font-size: 400%;
+    color: aliceblue;
+
+}
+
+a:link {
+    color: aliceblue;
+  }
+
+a:hover {
+  color: hotpink;
+}
+
+h2 {
+    margin: 150px 150px;
+    color: aliceblue;
+}
+
+#coin {
+    color: rgb(238, 178, 25);
+}
