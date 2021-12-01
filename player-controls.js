@@ -87,7 +87,17 @@ function Player(x, y){
                     width: borders[i].width,
                     height: borders[i].height
                 }
+                if (checkIntersection(horizontalRectDetect, borderRect)){
+                    // console.log("hit")
+                    this.xSpeed = 0;
+                }
+
+                if (checkIntersection(verticalRectDetect, borderRect)){
+                    // console.log("hit")
+                    this.ySpeed = 0;
+                }
             }
+
 
             this.x += this.xSpeed;
             this.y += this.ySpeed;
