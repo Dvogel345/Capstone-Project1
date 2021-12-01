@@ -36,6 +36,7 @@ function Player(x, y){
                 // Move up
                 this.ySpeed -= 15;
             } else if (downKey) {
+                
                 // Move down
                 this.ySpeed = 5;
             }
@@ -88,12 +89,20 @@ function Player(x, y){
                     height: borders[i].height
                 }
                 if (checkIntersection(horizontalRectDetect, borderRect)){
+                    while (checkIntersection(horizontalRectDetect, borderRect)){
+                        horizontalRectDetect.x -= Math.sign(this.xSpeed);
+                    }
                     // console.log("hit")
+                    this.x = horizontalRectDetect.x
                     this.xSpeed = 0;
                 }
 
                 if (checkIntersection(verticalRectDetect, borderRect)){
+                    while (checkIntersection(verticalRectDetect, borderRect)){
+                        verticalRectDetect.y -= Math.sign(this.ySpeed);
+                    }
                     // console.log("hit")
+                    this.y = verticalRectDetect.y
                     this.ySpeed = 0;
                 }
             }

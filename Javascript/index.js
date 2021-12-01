@@ -25,7 +25,7 @@ window.onload = function(){
 
     // Create Player
     // (x / y coords)
-    player = new Player(450, 20)
+    player = new Player(700, 20)
 
     // Create Borders
     // ground
@@ -106,7 +106,7 @@ function setupInputs() {
 }
 
 function checkIntersection(r1, r2) {
-    if(r1.x >= r2.x + r2.width) {
+    if (r1.x >= r2.x + r2.width) {
         return false;
     } else if (r1.x + r1.width <= r2.x) {
         return false;
