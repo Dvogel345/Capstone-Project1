@@ -37,10 +37,11 @@ function Player(x, y){
                 this.ySpeed -= 15;
             } else if (downKey) {
                 // Move down
-                this.ySpeed = 15;
+                this.ySpeed = 5;
             }
             // Apply gravity
             this.ySpeed += 5;
+
             // Correct the Speed
             if (this.xSpeed > this.maxSpeed) {
                 this.xSpeed = this.maxSpeed;
@@ -57,11 +58,23 @@ function Player(x, y){
             } else {
                 this.xSpeed = Math.ceil(this.xSpeed);
             }
-
+            if (this.ySpeed > 0) {
+                this.ySpeed = Math.floor(this.ySpeed);
+            } else {
+                this.ySpeed = Math.ceil(this.ySpeed);
+            }
             // Horizontal Collision Rect
             let horizontalRectDetect = {
                 x: this.x + this.xSpeed,
                 y: this.y,
+                width: this.width,
+                height: this.height
+            }
+
+            // Vertical Collision Rect
+            let verticalRectDetect = {
+                x: this.x,
+                y: this.y + this.ySpeed,
                 width: this.width,
                 height: this.height
             }
