@@ -11,7 +11,9 @@ function Border (x, y, width, height, type) {
             ctx.fillStyle = "green";
         } else if (this.type === 2) {
             ctx.fillStyle = "red"
-        }
+        }// else if (this.type === 3) {
+        //     ctx.fillStyle = "black"
+        // }
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 }
