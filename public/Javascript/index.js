@@ -42,7 +42,7 @@ window.onload = function(){
     borders.push(new Border(100, 150, 350, 30, 1));
 
     // Ceiling / spikes = death
-    // borders.push(new Border(0, 30, 750, 30, 2));
+    borders.push(new Border(0, 30, 30, 30, 1));
     
     // Start game loop
     gameLoop = setInterval(step, 1000/30);
