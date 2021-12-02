@@ -7,9 +7,9 @@ function Border (x, y, width, height, type) {
     this.type = type;
 
     this.draw = function() {
-        if (this.type === 1) {
+        if (this.type === "ground") {
             ctx.fillStyle = "green";
-        } else if (this.type === 2) {
+        } else if (this.type === "walls") {
             ctx.fillStyle = "red"
         }
         ctx.fillRect(this.x, this.y, this.width, this.height);

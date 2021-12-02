@@ -25,24 +25,25 @@ window.onload = function(){
 
     // Create Player
     // (x / y coords)
-    player = new Player(700, 20)
+    player = new Player(300, 50)
 
     // Create coin
     coin = new Coin(30, 30);
 
     // Create Borders
     // ground
-    borders.push(new Border(30, 470, 800, 30, 1));
+    borders.push(new Border(30, 470, 800, 30, "ground"));
     // walls 
-    borders.push(new Border(0, 0, 30, 800, 2));
-    borders.push(new Border(770, 0,  30, 500, 2));
+    borders.push(new Border(0, 0, 30, 800, "walls"));
+    borders.push(new Border(770, 0,  30, 500, "walls"));
+    borders.push(new Border(30, 0,  740, 30, "walls"));
     // blocks
-    borders.push(new Border(100, 390, 80, 80, 1));
-    borders.push(new Border(250, 290, 80, 80, 1));
-    borders.push(new Border(400, 290, 80, 80, 1));
-    borders.push(new Border(550, 190, 80, 80, 1));
+    borders.push(new Border(100, 390, 80, 80, "ground"));
+    borders.push(new Border(250, 290, 80, 80, "ground"));
+    borders.push(new Border(400, 290, 80, 80, "ground"));
+    borders.push(new Border(550, 190, 80, 80, "ground"));
     // top platform
-    borders.push(new Border(100, 150, 350, 30, 1));
+    borders.push(new Border(100, 150, 350, 30, "ground"));
     
     // Start game loop
     gameLoop = setInterval(step, 1000/30);
@@ -120,4 +121,6 @@ function checkIntersection(r1, r2) {
     } else {
         return true;
     }
+
+
 }
