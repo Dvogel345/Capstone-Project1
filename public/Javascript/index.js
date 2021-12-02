@@ -30,7 +30,7 @@ window.onload = function(){
     // Create Borders
     // ground
     borders.push(new Border(30, 470, 800, 30, 1));
-    // walls 
+    // walls Red = Dead
     borders.push(new Border(0, 0, 30, 800, 2));
     borders.push(new Border(770, 0,  30, 500, 2));
     // blocks
@@ -41,8 +41,8 @@ window.onload = function(){
     // top platform
     borders.push(new Border(100, 150, 350, 30, 1));
 
-    // Ceiling / spikes = death
-    borders.push(new Border(0, 30, 30, 30, 1));
+    // ceiling Red = Dead
+    borders.push(new Border(0, 30, 800, 30, 2));
     
     // Start game loop
     gameLoop = setInterval(step, 1000/30);

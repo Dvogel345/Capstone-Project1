@@ -1,6 +1,9 @@
 # Capstone-Project1
 Making a browser game
 
+**Jen** & **Who ever reads this code**: This code is organized in this way because netlify didn't like my organization prior; 
+so having everything in folders besides html is what allows netlify to function.
+
                     Game Requirements
 
 This game can be designed for 2 or more players (PvP) or 1 player (PvE)
@@ -63,4 +66,5 @@ JS:     End Game State
             
             When player object passes by End Game portal, game ends    
                 
-                
+
+
