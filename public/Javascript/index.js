@@ -27,6 +27,9 @@ window.onload = function(){
     // (x / y coords)
     player = new Player(700, 20)
 
+    // Create coin
+    coin = new Coin(30, 30);
+
     // Create Borders
     // ground
     borders.push(new Border(30, 470, 800, 30, 1));
