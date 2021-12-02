@@ -3,14 +3,16 @@ function Border (x, y, width, height, type) {
     this.y = y;
     this.width = width;
     this.height = height;
-    // type of border ie walls, ground, doors
+    // type of border ie walls, ground
     this.type = type;
 
     this.draw = function() {
-        if (this.type === 1) {
-            ctx.fillStyle = "green";
-        } else if (this.type === 2) {
-            ctx.fillStyle = "red"
+        if (this.type === "ground") {
+            ctx.fillStyle = "green"
+        } else if (this.type === "death") {
+            ctx.fillStyle = "black"
+        } else if (this.type === "end") {
+            ctx.fillStyle = "gold"
         }
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }

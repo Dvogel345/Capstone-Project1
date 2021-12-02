@@ -95,6 +95,7 @@ function Player(x, y){
                     // console.log("hit")
                     this.x = horizontalRectDetect.x
                     this.xSpeed = 0;
+                    
                 }
 
                 if (checkIntersection(verticalRectDetect, borderRect)){
