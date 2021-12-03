@@ -14,22 +14,40 @@ let leftKey;
 let upKey;
 let downKey;
 
+
 // Runs once page loads
 window.onload = function(){
     //Assigns canvas and context variables
     canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d")
+    this.width = canvas.width;
+    this.height = canvas.height;
 
     // Steup key listeners
     setupInputs();
 
+    function animate(timeStamp){
+        // ctx.clearRect(0, 0, this.width, this.height);
+        // console.log("test")
+        let deltaTime = timeStamp - lastTime;
+        lastTime = timeStamp;
+        // console.log(timeStamp)
+        timeToNextCoin += deltaTime;
+        if (timeToNextCoin > coinIntervals){
+            coins.push(new Coin());
+            timeToNextCoin = 0;
+        }
+        // console.log(deltaTime);
+        requestAnimationFrame(animate);
+    }
+    animate();    
+
     // Create Player
     // (x / y coords)
     player = new Player(300, 50)
-
-    // Create coin
-    coin = new Coin(30, 30);
-
+    
+    // Generate coins
+    
     // Create Borders
     // ground
     borders.push(new Border(30, 470, 800, 30, "ground"));
@@ -48,7 +66,7 @@ window.onload = function(){
     // Start game loop
     gameLoop = setInterval(step, 1000/30);
 
-}
+} 
 
 function step() {
     // step player
@@ -66,6 +84,9 @@ function draw() {
     // Draw the player
     player.draw();
 
+    // Draw the ScoreBoard
+    // score.draw();
+
     //Draw the borders
     // Using a for loop allows to go through the array of dimensions
     for (let i = 0; i < borders.length; i++){
@@ -74,7 +95,7 @@ function draw() {
     // borders.draw();
 
 }
-
+    
 function setupInputs() {
     document.addEventListener("keydown", function(event) {
         if (event.key === "ArrowRight" || event.key === "d") {
@@ -92,35 +113,49 @@ function setupInputs() {
         }
     });
 
-    document.addEventListener("keyup", function(event) {
-        if (event.key === "ArrowRight" || event.key === "d") {
-            // console.log("right");
-            rightKey = false;
-        } else if (event.key === "ArrowLeft" || event.key === "a") {
-            // console.log("left");
-            leftKey = false;
-        } else if (event.key === "ArrowDown" || event.key === "s") {
-            console.log("down");
-            downKey = false;
-        } else if (event.key === "ArrowUp" || event.key === "w") {
-            console.log("up");
-            upKey = false;
-        }
-    });
-}
-
-function checkIntersection(r1, r2) {
-    if (r1.x >= r2.x + r2.width) {
-        return false;
-    } else if (r1.x + r1.width <= r2.x) {
-        return false;
-    } else if (r1.y >= r2.y + r2.height) {
-        return false;
-    } else if (r1.y + r1.height <= r2.y) {
-        return false;
-    } else {
-        return true;
+        document.addEventListener("keyup", function(event) {
+            if (event.key === "ArrowRight" || event.key === "d") {
+                // console.log("right");
+                rightKey = false;
+            } else if (event.key === "ArrowLeft" || event.key === "a") {
+                // console.log("left");
+                leftKey = false;
+            } else if (event.key === "ArrowDown" || event.key === "s") {
+                // console.log("down");
+                downKey = false;
+            } else if (event.key === "ArrowUp" || event.key === "w") {
+                // console.log("up");
+                upKey = false;
+            }
+        });
     }
 
+    function checkIntersection(r1, r2) {
+        if (r1.x >= r2.x + r2.width) {
+            return false;
+        } else if (r1.x + r1.width <= r2.x) {
+            return false;
+        } else if (r1.y >= r2.y + r2.height) {
+            return false;
+        } else if (r1.y + r1.height <= r2.y) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
-}
+    // function checkIntersectionType(r1, r2) {
+    //     if (r1.type = r2.type + r2.width) {
+    //         return false;
+    //     } else if (r1.type + r1.width <= r2.type) {
+    //         return false;
+    //     } else if (r1.type >= r2.type + r2.height) {
+    //         return false;
+    //     } else if (r1.type + r1.height <= r2.type) {
+    //         return false;
+    //     } else {
+    //         return true;
+    //     }
+
+           
+
