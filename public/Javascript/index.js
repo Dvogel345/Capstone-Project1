@@ -14,6 +14,11 @@ let leftKey;
 let upKey;
 let downKey;
 
+// Coin variable
+let timeToNextCoin = 0;
+let coinIntervals = 750;
+let lastTime = 0;
+let coins = [];
 
 // Runs once page loads
 window.onload = function(){
@@ -24,8 +29,30 @@ window.onload = function(){
     this.height = canvas.height;
 
     // Steup key listeners
-    setupInputs();
+    setupInputs();  
 
+    // Create Player
+    // (x / y coords)
+    player = new Player(300, 50)
+    
+    class Coin {
+        constructor(){
+            this.width = 30;
+            this.height = 30;
+            this.x = Math.random() * (canvas.width - this.width);
+            this.y = Math.random() * (canvas.height - this.height);
+            this.directionX = Math.random() * 2 + 3;
+            this.directionY = Math.random() * 2 - 2.5;
+            }
+        update(){
+            this.x -= this.directionX;
+        }
+        draw(){
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
+    }
+
+    // Generate coins
     function animate(timeStamp){
         // ctx.clearRect(0, 0, this.width, this.height);
         // console.log("test")
@@ -36,18 +63,14 @@ window.onload = function(){
         if (timeToNextCoin > coinIntervals){
             coins.push(new Coin());
             timeToNextCoin = 0;
+            console.log(coins);
         }
         // console.log(deltaTime);
         requestAnimationFrame(animate);
     }
-    animate();    
+    animate(); 
+     
 
-    // Create Player
-    // (x / y coords)
-    player = new Player(300, 50)
-    
-    // Generate coins
-    
     // Create Borders
     // ground
     borders.push(new Border(30, 470, 800, 30, "ground"));
