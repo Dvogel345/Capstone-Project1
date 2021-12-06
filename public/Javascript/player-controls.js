@@ -15,6 +15,7 @@ function Player(x, y){
     this.width = 20;
     this.height = 50;
     this.active = true;
+    this.alive = true;
 
     this.step = function() {
         // Movement

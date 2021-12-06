@@ -44,7 +44,7 @@ window.onload = function(){
 
     // Create Player
     // (x / y coords)
-    player = new Player(300, 50)
+    player = new Player(300, 50, alive="true")
     
     // Generate coins
     

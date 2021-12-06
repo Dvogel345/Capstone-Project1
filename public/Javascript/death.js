@@ -1,3 +1,8 @@
+// player 1
+    // if your px is grounded 
+    // or in air
+        // 
+
 let death = {
     youDied() {
         // Add death information 
