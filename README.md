@@ -1,6 +1,8 @@
 # Capstone-Project1
 Making a browser game
 
+quirky-mccarthy-42875d.netlify.app
+
                     Game Requirements
 
 This game can be designed for 2 or more players (PvP) or 1 player (PvE)
@@ -63,4 +65,4 @@ JS:     End Game State
             
             When player object passes by End Game portal, game ends    
                 
-                
+            
