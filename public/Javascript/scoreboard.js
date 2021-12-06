@@ -1,8 +1,6 @@
-addPoints => {
+let score = 0;
 
+score = function() {
+    ctx.fillStyle = "white";
+    ctx.fillText("Score: " + score, 400, 400)
 }
-
-let pointCount = document.getElementById("scoreboard-score-1");
-
-points = points + 25;
-pointCount.innerHTML = points;
